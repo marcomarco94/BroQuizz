@@ -45,32 +45,27 @@ public class DataService : IDataService
         var questions = await GetQuestionsByTopicAsync(topicId);
         foreach (var question in questions)
         {
-            if (question != null)
-            {
-                var allAnswers = await GetAnswersByQuestionAsync(question.Id);
-                var answerModels = allAnswers.ToList();
-                var correctAnswer = answerModels.FirstOrDefault(a => a != null && a.CorrectAnswer);
-                var incorrectAnswers = answerModels.Where(a => a != null && a.CorrectAnswer)
-                    .OrderBy(a => Guid.NewGuid())
-                    .Take(3)
-                    .ToList();
+            var allAnswers = await GetAnswersByQuestionAsync(question.Id);
+            var correctAnswer = allAnswers.FirstOrDefault(a => a.CorrectAnswer);
+            var incorrectAnswers = allAnswers.Where(a => !a.CorrectAnswer)
+                .OrderBy(a => Guid.NewGuid())
+                .Take(3)
+                .ToList();
 
-                if (correctAnswer != null && incorrectAnswers.Count >= 1)
+            if (correctAnswer != null && incorrectAnswers.Count >= 1)
+            {
+                var answers = new List<AnswerModel?> { correctAnswer };
+                answers.AddRange(incorrectAnswers);
+                answers = answers.OrderBy(a => Guid.NewGuid()).ToList();
+                var quizModel = new QuestionModel
                 {
-                    var answers = new List<AnswerModel?> { correctAnswer };
-                    answers.AddRange(incorrectAnswers);
-                    answers = answers.OrderBy(a => Guid.NewGuid()).ToList();
-                    var quizModel = new QuestionModel
-                    {
-                        Id = question.Id,
-                        Text = question.Text,
-                        Answers = answers
-                    };
-                    quiz.Add(quizModel);
-                }
+                    Id = question.Id,
+                    Text = question.Text,
+                    Answers = answers
+                };
+                quiz.Add(quizModel);
             }
         }
-
         return quiz;
     }
 
