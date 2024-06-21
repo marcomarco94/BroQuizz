@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "name": "API",
+      "href": "api/BlazorApp.Components.html",
+      "tocHref": "api/toc.html",
+      "topicHref": "api/BlazorApp.Components.html",
+      "topicUid": "BlazorApp.Components"
+    }
+  ],
+  "pdf": true
+}

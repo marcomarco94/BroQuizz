@@ -1,0 +1,37 @@
+﻿@page "/Account/Manage/PersonalData"
+
+@inject IdentityUserAccessor UserAccessor
+
+<PageTitle>Persönliche Daten</PageTitle>
+
+<StatusMessage />
+<h3>Persönliche Daten</h3>
+
+<FluentGrid>
+    <FluentGridItem xs="12" sm="6">
+        <p>Ihr Konto enthält persönliche Daten, die Sie uns zur Verfügung gestellt haben. Auf dieser Seite können Sie diese Daten herunterladen oder löschen.</p>
+        <p>
+            <strong>Das Löschen dieser Daten wird Ihr Konto dauerhaft entfernen, und dies kann nicht wiederhergestellt werden.</strong>
+        </p>
+        <form action="Account/Manage/DownloadPersonalData" method="post">
+            <AntiforgeryToken />
+            <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" Style="width:20%;">Herunterladen</FluentButton>
+        </form>
+
+        <hr />
+
+        <p>
+            <FluentAnchor Href="Account/Manage/DeletePersonalData" Style="width:20%;">Löschen</FluentAnchor>
+        </p>
+    </FluentGridItem>
+</FluentGrid>
+
+@code {
+[CascadingParameter]
+private HttpContext HttpContext { get; set; } = default!;
+
+protected override async Task OnInitializedAsync()
+{
+_ = await UserAccessor.GetRequiredUserAsync(HttpContext);
+}
+}

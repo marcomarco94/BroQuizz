@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-BlazorApp-8f92eada-ef4d-4b77-bbff-1bc5264bf977</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Blazor-ApexCharts" Version="3.3.0"/>
+        <PackageReference Include="Microsoft.AspNet.SignalR" Version="2.4.3"/>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.*-* "/>
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.*-* "/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\DataAccess\DataAccess.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Update="Components\HelperComps\GameTopicArea.razor">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        </Content>
+        <Content Update="Components\Pages\QuizGame.razor">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="_documentation\manifest.json"/>
+        <_ContentIncludedByDefault Remove="_documentation\search-stopwords.json"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,675 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Class SignlalRHub | Docu </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Class SignlalRHub | Docu " name="title">
+
+    <meta content="Provides methods for managing the SignalR hub." name="description">
+    <link href="../favicon.ico" rel="icon">
+    <link href="../public/docfx.min.css" rel="stylesheet">
+    <link href="../public/main.css" rel="stylesheet">
+    <meta content="../toc.html" name="docfx:navrel">
+    <meta content="toc.html" name="docfx:tocrel">
+
+    <meta content="../" name="docfx:rel">
+
+
+    <meta content="https://github.com/marcomarco94/IUQuizApp/new/master/apiSpec/new?filename=BlazorApp_Hub_SignlalRHub.md&amp;value=---%0Auid%3A%20BlazorApp.Hub.SignlalRHub%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A"
+          name="docfx:docurl">
+    <meta content="In this article" name="loc:inThisArticle">
+    <meta content="{count} results for &quot;{query}&quot;" name="loc:searchResultsCount">
+    <meta content="No results for &quot;{query}&quot;" name="loc:searchNoResults">
+    <meta content="Filter by title" name="loc:tocFilter">
+    <meta content="Next" name="loc:nextArticle">
+    <meta content="Previous" name="loc:prevArticle">
+    <meta content="Light" name="loc:themeLight">
+    <meta content="Dark" name="loc:themeDark">
+    <meta content="Auto" name="loc:themeAuto">
+    <meta content="Change theme" name="loc:changeTheme">
+    <meta content="Copy" name="loc:copy">
+    <meta content="Download PDF" name="loc:downloadPdf">
+
+    <script src="./../public/docfx.min.js" type="module"></script>
+
+    <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+    </script>
+
+</head>
+
+<body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+<header class="bg-body border-bottom">
+    <nav class="navbar navbar-expand-md" id="autocollapse" role="navigation">
+        <div class="container-xxl flex-nowrap">
+            <a class="navbar-brand" href="../index.html">
+                <img alt="Docu" class="svg" id="logo" src="../logo.svg">
+                Docu
+            </a>
+            <button aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation"
+                    class="btn btn-lg d-md-none border-0" data-bs-target="#navpanel" data-bs-toggle="collapse"
+                    type="button">
+                <i class="bi bi-three-dots"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navpanel">
+                <div id="navbar">
+                    <form class="search" id="search" role="search">
+                        <i class="bi bi-search"></i>
+                        <input aria-label="Search" autocomplete="off" class="form-control" disabled="" id="search-query"
+                               placeholder="Search" type="search">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container-xxl">
+    <div class="toc-offcanvas">
+        <div aria-labelledby="tocOffcanvasLabel" class="offcanvas-md offcanvas-start" id="tocOffcanvas" tabindex="-1">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas"
+                        type="button"></button>
+            </div>
+            <div class="offcanvas-body">
+                <nav class="toc" id="toc"></nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="actionbar">
+            <button aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents"
+                    class="btn btn-lg border-0 d-md-none" data-bs-target="#tocOffcanvas" data-bs-toggle="offcanvas"
+                    style="margin-top: -.65em; margin-left: -.8em" type="button">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="BlazorApp.Hub.SignlalRHub">
+
+
+            <h1 class="text-break" data-uid="BlazorApp.Hub.SignlalRHub" id="BlazorApp_Hub_SignlalRHub">
+                Class SignlalRHub <a class="header-action link-secondary"
+                                     href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L9"
+                                     title="View source"><i
+                    class="bi bi-code-slash"></i></a>
+            </h1>
+
+            <div class="facts text-secondary">
+                <dl>
+                    <dt>Namespace</dt>
+                    <dd><a class="xref" href="BlazorApp.html">BlazorApp</a>.<a class="xref" href="BlazorApp.Hub.html">Hub</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Assembly</dt>
+                    <dd>BlazorApp.dll</dd>
+                </dl>
+            </div>
+
+            <div class="markdown summary"><p>Provides methods for managing the SignalR hub.</p>
+            </div>
+            <div class="markdown conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public class SignlalRHub : Hub, IDisposable</code></pre>
+            </div>
+
+
+            <dl class="typelist inheritance">
+                <dt>Inheritance</dt>
+                <dd>
+                    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+                    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.hub">Hub</a>
+                    </div>
+                    <div><span class="xref">SignlalRHub</span></div>
+                </dd>
+            </dl>
+
+            <dl class="typelist implements">
+                <dt>Implements</dt>
+                <dd>
+                    <div><a class="xref"
+                            href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+                </dd>
+            </dl>
+
+
+            <dl class="typelist inheritedMembers">
+                <dt>Inherited Members</dt>
+                <dd>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.hub.dispose#microsoft-aspnetcore-signalr-hub-dispose(system-boolean)">Hub.Dispose(bool)</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.hub.dispose#microsoft-aspnetcore-signalr-hub-dispose">Hub.Dispose()</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.hub.clients">Hub.Clients</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.hub.context">Hub.Context</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.hub.groups">Hub.Groups</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object,
+                            object)</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object,
+                            object)</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+                    </div>
+                </dd>
+            </dl>
+
+
+            <h2 class="section" id="constructors">Constructors
+            </h2>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.#ctor*" id="BlazorApp_Hub_SignlalRHub__ctor_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.#ctor(BlazorApp.Hub.SignalRGameServiceProvider)"
+                id="BlazorApp_Hub_SignlalRHub__ctor_BlazorApp_Hub_SignalRGameServiceProvider_">
+                SignlalRHub(SignalRGameServiceProvider)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L16"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"></div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code
+                        class="lang-csharp hljs">public SignlalRHub(SignalRGameServiceProvider gameServiceProvider)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>gameServiceProvider</code> <a class="xref"
+                                                        href="BlazorApp.Hub.SignalRGameServiceProvider.html">SignalRGameServiceProvider</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <h2 class="section" id="fields">Fields
+            </h2>
+
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.HubUrl" id="BlazorApp_Hub_SignlalRHub_HubUrl">
+                HubUrl
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L11"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"></div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public const string HubUrl = &quot;/gaminghub&quot;</code></pre>
+            </div>
+
+
+            <h4 class="section">Field Value</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+                <dd></dd>
+            </dl>
+
+
+            <h2 class="section" id="methods">Methods
+            </h2>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.GetConnectedUsers*"
+               id="BlazorApp_Hub_SignlalRHub_GetConnectedUsers_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.GetConnectedUsers" id="BlazorApp_Hub_SignlalRHub_GetConnectedUsers">
+                GetConnectedUsers()
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L25"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Gets the connected users.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public List&lt;PlayerModel?&gt; GetConnectedUsers()</code></pre>
+            </div>
+
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref"
+                       href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a
+                        class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a>&gt;
+                </dt>
+                <dd><p>A list of connected users.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.LeaveGroup*" id="BlazorApp_Hub_SignlalRHub_LeaveGroup_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.LeaveGroup(ModelsLibrary.PlayerModel)"
+                id="BlazorApp_Hub_SignlalRHub_LeaveGroup_ModelsLibrary_PlayerModel_">
+                LeaveGroup(PlayerModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L70"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Removes the player from the group and stop the game if the player is
+                the last one in the group.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task LeaveGroup(PlayerModel? player)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>player</code> <a class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a></dt>
+                <dd><p>The player to remove from the group.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.OnConnectedAsync*"
+               id="BlazorApp_Hub_SignlalRHub_OnConnectedAsync_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.OnConnectedAsync" id="BlazorApp_Hub_SignlalRHub_OnConnectedAsync">
+                OnConnectedAsync()
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L207"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Handles the event when a connection is established.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override Task OnConnectedAsync()</code></pre>
+            </div>
+
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.OnDisconnectedAsync*"
+               id="BlazorApp_Hub_SignlalRHub_OnDisconnectedAsync_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.OnDisconnectedAsync(System.Exception)"
+                id="BlazorApp_Hub_SignlalRHub_OnDisconnectedAsync_System_Exception_">
+                OnDisconnectedAsync(Exception?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L217"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Handles the event when a connection is disconnected.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override Task OnDisconnectedAsync(Exception? e)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a>
+                </dt>
+                <dd><p>The exception that caused the disconnection, if any.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.RemovePlayer*" id="BlazorApp_Hub_SignlalRHub_RemovePlayer_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.RemovePlayer(ModelsLibrary.PlayerModel,System.String)"
+                id="BlazorApp_Hub_SignlalRHub_RemovePlayer_ModelsLibrary_PlayerModel_System_String_">
+                RemovePlayer(PlayerModel?, string)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L148"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Removes a player from the game.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task RemovePlayer(PlayerModel? player, string roomId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>player</code> <a class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a></dt>
+                <dd><p>The player to remove.</p>
+                </dd>
+                <dt><code>roomId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The room ID.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.SendToGroup*" id="BlazorApp_Hub_SignlalRHub_SendToGroup_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.SendToGroup(ModelsLibrary.PlayerModel,System.String,System.String)"
+                id="BlazorApp_Hub_SignlalRHub_SendToGroup_ModelsLibrary_PlayerModel_System_String_System_String_">
+                SendToGroup(PlayerModel, string, string)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L92"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Sends a message to the group.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task SendToGroup(PlayerModel player, string message, string roomId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>player</code> <a class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a></dt>
+                <dd><p>The player sending the message.</p>
+                </dd>
+                <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The message to send.</p>
+                </dd>
+                <dt><code>roomId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The room ID.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.StartSinglePlayerGame*"
+               id="BlazorApp_Hub_SignlalRHub_StartSinglePlayerGame_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.StartSinglePlayerGame(ModelsLibrary.PlayerModel,System.String)"
+                id="BlazorApp_Hub_SignlalRHub_StartSinglePlayerGame_ModelsLibrary_PlayerModel_System_String_">
+                StartSinglePlayerGame(PlayerModel?, string?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L122"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Starts a single player game.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task StartSinglePlayerGame(PlayerModel? player, string? roomId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>player</code> <a class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a></dt>
+                <dd><p>The player starting the game.</p>
+                </dd>
+                <dt><code>roomId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The room ID.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.StopGame*" id="BlazorApp_Hub_SignlalRHub_StopGame_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.StopGame(System.String,System.Boolean)"
+                id="BlazorApp_Hub_SignlalRHub_StopGame_System_String_System_Boolean_">
+                StopGame(string, bool)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L163"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Stops the game.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task StopGame(string roomId, bool singleMode)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>roomId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The room ID.</p>
+                </dd>
+                <dt><code>singleMode</code> <a class="xref"
+                                               href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>
+                </dt>
+                <dd><p>Indicates whether the game is in single player mode.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.UpdateGame*" id="BlazorApp_Hub_SignlalRHub_UpdateGame_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.UpdateGame(ModelsLibrary.GameModel,System.String)"
+                id="BlazorApp_Hub_SignlalRHub_UpdateGame_ModelsLibrary_GameModel_System_String_">
+                UpdateGame(GameModel, string)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L138"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates the game state.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task UpdateGame(GameModel game, string roomId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>game</code> <a class="xref" href="ModelsLibrary.GameModel.html">GameModel</a></dt>
+                <dd><p>The updated game state.</p>
+                </dd>
+                <dt><code>roomId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The room ID.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.UpdateGroup*" id="BlazorApp_Hub_SignlalRHub_UpdateGroup_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.UpdateGroup(ModelsLibrary.PlayerModel)"
+                id="BlazorApp_Hub_SignlalRHub_UpdateGroup_ModelsLibrary_PlayerModel_">
+                UpdateGroup(PlayerModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L34"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates the group of the player and starts the game if there are
+                enough players in the group.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task UpdateGroup(PlayerModel? player)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>player</code> <a class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a></dt>
+                <dd><p>The player to update.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="BlazorApp.Hub.SignlalRHub.UpdateSelectedAnswer*"
+               id="BlazorApp_Hub_SignlalRHub_UpdateSelectedAnswer_"></a>
+
+            <h3 data-uid="BlazorApp.Hub.SignlalRHub.UpdateSelectedAnswer(ModelsLibrary.PlayerModel)"
+                id="BlazorApp_Hub_SignlalRHub_UpdateSelectedAnswer_ModelsLibrary_PlayerModel_">
+                UpdateSelectedAnswer(PlayerModel)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L189"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates the selected answer of a player.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public void UpdateSelectedAnswer(PlayerModel player)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>player</code> <a class="xref" href="ModelsLibrary.PlayerModel.html">PlayerModel</a></dt>
+                <dd><p>The player who selected the answer.</p>
+                </dd>
+            </dl>
+
+
+        </article>
+
+        <div class="contribution d-print-none">
+            <a class="edit-link"
+               href="https://github.com/marcomarco94/IUQuizApp/blob/master/BlazorApp/Hub/SignlalRHub.cs/#L9">Edit this
+                page</a>
+        </div>
+
+
+    </div>
+
+    <div class="affix">
+        <nav id="affix"></nav>
+    </div>
+</main>
+
+<div class="container-xxl search-results" id="search-results"></div>
+
+<footer class="border-top text-secondary">
+    <div class="container-xxl">
+        <div class="flex-fill">
+            <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,998 @@
+{
+  "source_base_path": "C:/Users/marco/OneDrive/Desktop/repos/IUQuizApp",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.AccessDenied.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.AccessDenied.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ConfirmEmail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ConfirmEmail.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ConfirmEmailChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ConfirmEmailChange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ExternalLogin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ExternalLogin.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ForgotPassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ForgotPassword.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ForgotPasswordConfirmation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ForgotPasswordConfirmation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.InvalidPasswordReset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.InvalidPasswordReset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.InvalidUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.InvalidUser.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Lockout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Lockout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Login.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Login.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.LoginWith2fa.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.LoginWith2fa.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.LoginWithRecoveryCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.LoginWithRecoveryCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.ChangePassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.ChangePassword.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.DeletePersonalData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.DeletePersonalData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.Disable2fa.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.Disable2fa.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.Email.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.Email.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.EnableAuthenticator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.EnableAuthenticator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.ExternalLogins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.ExternalLogins.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.GenerateRecoveryCodes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.GenerateRecoveryCodes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.Index.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.Index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.PersonalData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.PersonalData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.ResetAuthenticator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.ResetAuthenticator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.SetPassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.SetPassword.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.TwoFactorAuthentication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.TwoFactorAuthentication.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage._Imports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage._Imports.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Manage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Manage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.Register.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.Register.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.RegisterConfirmation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.RegisterConfirmation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ResendEmailConfirmation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ResendEmailConfirmation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ResetPassword.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ResetPassword.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.ResetPasswordConfirmation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.ResetPasswordConfirmation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages._Imports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages._Imports.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Pages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.AccountLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.AccountLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.ExternalLoginPicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.ExternalLoginPicker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.ManageLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.ManageLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.ManageNavMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.ManageNavMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.RedirectToLogin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.RedirectToLogin.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.ShowRecoveryCodes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.ShowRecoveryCodes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.StatusMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.StatusMessage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Account.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Account.Shared.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.App.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.DeleteDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.DeleteDialog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.EditDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.EditDialog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.GameTopicArea.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.GameTopicArea.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.GamingArea.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.GamingArea.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.OnlineArea.NewMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.OnlineArea.NewMessage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.OnlineArea.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.OnlineArea.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.QuestionnaireListbox-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.QuestionnaireListbox-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.HelperComps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.HelperComps.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Layout.MainLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Layout.MainLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Layout.NavMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Layout.NavMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Layout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Layout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.Dashboard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.Dashboard.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.Docu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.Docu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.Error.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.HowTo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.HowTo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.Questionnaires.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.Questionnaires.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.QuizGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.QuizGame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Pages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.Routes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.Routes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components._Imports.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components._Imports.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Components.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Hub.SignalRGameService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Hub.SignalRGameService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Hub.SignalRGameServiceProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Hub.SignalRGameServiceProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Hub.SignlalRHub.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Hub.SignlalRHub.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Hub.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Hub.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Services.OnlineSerive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Services.OnlineSerive.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BlazorApp.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BlazorApp.Services.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.AuthData.ApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.AuthData.ApplicationDbContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.AuthData.ApplicationUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.AuthData.ApplicationUser.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.AuthData.Migrations.CreateIdentitySchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.AuthData.Migrations.CreateIdentitySchema.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.AuthData.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.AuthData.Migrations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.AuthData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.AuthData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.DataService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.DataService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.IDataService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.IDataService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.QuizDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.QuizDbContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.Repository.BaseRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.Repository.BaseRepository-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.Repository.IBaseRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.Repository.IBaseRepository-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.Repository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.Repository.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DataAccess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DataAccess.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.AnswerModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.AnswerModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.DashboardModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.DashboardModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.GameModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.GameModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.IQuestionnaire.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.IQuestionnaire.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.Message.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.Message.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.PlayerModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.PlayerModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.QuestionModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.QuestionModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.TopicModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.TopicModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ModelsLibrary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ModelsLibrary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

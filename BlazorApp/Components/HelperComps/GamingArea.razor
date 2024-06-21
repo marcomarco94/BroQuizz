@@ -1,0 +1,153 @@
+@using Microsoft.AspNetCore.SignalR.Client
+@implements IAsyncDisposable
+@inject OnlineSerive OnlineService
+@rendermode InteractiveServer
+
+<FluentGrid Spacing="2">
+    @if (Topic?.Id == 0 || !IsConnected)
+    {
+        <FluentGridItem xs="12">
+            <FluentCard Style="background-color:lightblue">
+
+                @if (!IsConnected)
+                {
+                    <FluentLabel Typo="Typography.Header" Alignment="HorizontalAlignment.Center">Starte im Mehrspielermodus oder als Einzelspieler</FluentLabel>
+                }
+                else if (Topic?.Id == 0)
+                {
+                    <FluentLabel Typo="Typography.Header" Alignment="HorizontalAlignment.Center">Wähle ein Thema, um das Spiel zu Starten</FluentLabel>
+                }
+            </FluentCard>
+        </FluentGridItem>
+    }
+
+    @if (_game != null && _game.GameStarted && !_game.ShowResult)
+    {
+        <FluentGridItem xs="12">
+            <FluentCard Style="background-color:lightblue">
+                <FluentStack>
+                    <FluentProgressRing Value="@_game.ProgressCurrentQuestion" Width="2em"></FluentProgressRing>
+                    <FluentLabel Typo="Typography.Header" Alignment="HorizontalAlignment.Center">@_game?.CurrentQuiz?.Text</FluentLabel>
+                    <FluentSpacer></FluentSpacer>
+                    <FluentLabel Typo="Typography.Header" Alignment="HorizontalAlignment.Center">Runde: @(_game?.Rounds - _game?.RoundsLeft) / @_game?.Rounds</FluentLabel>
+                </FluentStack>
+            </FluentCard>
+        </FluentGridItem>
+        @foreach (var answer in _game?.CurrentQuiz?.Answers)
+        {
+            <FluentGridItem xs="12">
+                <FluentCard Style="padding: 4px;" type="submit">
+                    <div style="@GetAnswerStyle(answer)">
+                        <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center" @onclick="() => OnAnswerClick(answer)">@answer.Text</FluentLabel>
+                    </div>
+                </FluentCard>
+            </FluentGridItem>
+        }
+    }
+    @if (_game != null && _game.GameStarted && _game.ShowResult)
+    {
+        <FluentGridItem xs="12">
+            <FluentCard Style="background-color:lightblue">
+                <FluentLabel Typo="Typography.Header" Alignment="HorizontalAlignment.Center">Ergebnis:</FluentLabel>
+            </FluentCard>
+        </FluentGridItem>
+    }
+    @if (_game != null && _game.GameStarted)
+    {
+        <FluentGridItem xs="12">
+            <FluentCard Style="background-color:lightskyblue; padding: 6px">
+                @if (_game?.Players != null)
+                {
+                    foreach (var player in _game.Players)
+                    {
+                        <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">@player?Username - @player?.Score Punkt(e)</FluentLabel>
+                    }
+                }
+            </FluentCard>
+        </FluentGridItem>
+    }
+    @if ((_game != null && !_game.GameStarted) || (_game != null &&_game.ShowResult))
+    {
+        <FluentGridItem xs="12">
+            <FluentCard Style="background-color:lightgrey">
+                <FluentLabel Typo="Typography.Subject" Alignment="HorizontalAlignment.Center">Neues Spiel startet in Kürze</FluentLabel>
+            </FluentCard>
+        </FluentGridItem>
+    }
+
+</FluentGrid>
+
+@code {
+    [Parameter] public TopicModel? Topic { get; set; }
+    [Parameter] public List<PlayerModel>? ConnectedUsers { get; set; }
+
+    private bool IsConnected =>
+        OnlineService.HubConnection?.State == HubConnectionState.Connected;
+
+    private GameModel? _game;
+    private int SelectedAnswerId => IsConnected ? _game?.Players.FirstOrDefault(p => p.ConnectionId == OnlineService.HubConnection?.ConnectionId)?.SelectedAnswer?.Id ?? -1 : 0;
+
+    protected virtual void OnConnectionChanged(HubConnectionState oldState, HubConnectionState newState)
+    {
+        if (newState == HubConnectionState.Connected)
+        {
+            OnlineService.HubConnection?.On<GameModel?>("UpdateGame", UpdateGame);
+        }
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        OnlineService.ConnectionStateChanged += OnConnectionChanged;
+        return Task.CompletedTask;
+    }
+
+    string GetAnswerStyle(AnswerModel? answer)
+    {
+        if (answer != null && _game != null && _game.ShowCorrectAnswer && answer.CorrectAnswer)
+        {
+            return "background-color: lightgreen; border-radius: 5px;";
+        }
+
+        if (_game != null && _game.ShowCorrectAnswer && answer?.Id == SelectedAnswerId && !answer.CorrectAnswer)
+        {
+            return "background-color: red; border-radius: 5px;";
+        }
+
+        if (answer?.Id == SelectedAnswerId)
+        {
+            return "background-color: dodgerblue; border-radius: 5px;";
+        }
+
+        return "";
+    }
+
+
+    private async Task UpdateGame(GameModel? game)
+    {
+        await InvokeAsync(() =>
+        {
+            _game = game;
+            StateHasChanged();
+        });
+    }
+
+
+    private async Task OnAnswerClick(AnswerModel? clickedAnswer)
+    {
+        var myQuiz = _game?.Players.FirstOrDefault(p => p?.ConnectionId == OnlineService.HubConnection?.ConnectionId);
+        if (myQuiz != null)
+        {
+            myQuiz.SelectedAnswer = clickedAnswer;
+        }
+
+        await OnlineService.SendSelectedAnswerAsync(myQuiz);
+    }
+
+
+    public ValueTask DisposeAsync()
+    {
+        OnlineService.ConnectionStateChanged -= OnConnectionChanged;
+        return ValueTask.CompletedTask;
+    }
+
+}

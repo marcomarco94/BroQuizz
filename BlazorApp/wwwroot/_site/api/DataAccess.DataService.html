@@ -1,0 +1,865 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Class DataService | Docu </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Class DataService | Docu " name="title">
+
+
+    <link href="../favicon.ico" rel="icon">
+    <link href="../public/docfx.min.css" rel="stylesheet">
+    <link href="../public/main.css" rel="stylesheet">
+    <meta content="../toc.html" name="docfx:navrel">
+    <meta content="toc.html" name="docfx:tocrel">
+
+    <meta content="../" name="docfx:rel">
+
+
+    <meta content="https://github.com/marcomarco94/IUQuizApp/new/master/apiSpec/new?filename=DataAccess_DataService.md&amp;value=---%0Auid%3A%20DataAccess.DataService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A"
+          name="docfx:docurl">
+    <meta content="In this article" name="loc:inThisArticle">
+    <meta content="{count} results for &quot;{query}&quot;" name="loc:searchResultsCount">
+    <meta content="No results for &quot;{query}&quot;" name="loc:searchNoResults">
+    <meta content="Filter by title" name="loc:tocFilter">
+    <meta content="Next" name="loc:nextArticle">
+    <meta content="Previous" name="loc:prevArticle">
+    <meta content="Light" name="loc:themeLight">
+    <meta content="Dark" name="loc:themeDark">
+    <meta content="Auto" name="loc:themeAuto">
+    <meta content="Change theme" name="loc:changeTheme">
+    <meta content="Copy" name="loc:copy">
+    <meta content="Download PDF" name="loc:downloadPdf">
+
+    <script src="./../public/docfx.min.js" type="module"></script>
+
+    <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+    </script>
+
+</head>
+
+<body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+<header class="bg-body border-bottom">
+    <nav class="navbar navbar-expand-md" id="autocollapse" role="navigation">
+        <div class="container-xxl flex-nowrap">
+            <a class="navbar-brand" href="../index.html">
+                <img alt="Docu" class="svg" id="logo" src="../logo.svg">
+                Docu
+            </a>
+            <button aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation"
+                    class="btn btn-lg d-md-none border-0" data-bs-target="#navpanel" data-bs-toggle="collapse"
+                    type="button">
+                <i class="bi bi-three-dots"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navpanel">
+                <div id="navbar">
+                    <form class="search" id="search" role="search">
+                        <i class="bi bi-search"></i>
+                        <input aria-label="Search" autocomplete="off" class="form-control" disabled="" id="search-query"
+                               placeholder="Search" type="search">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container-xxl">
+    <div class="toc-offcanvas">
+        <div aria-labelledby="tocOffcanvasLabel" class="offcanvas-md offcanvas-start" id="tocOffcanvas" tabindex="-1">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas"
+                        type="button"></button>
+            </div>
+            <div class="offcanvas-body">
+                <nav class="toc" id="toc"></nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="actionbar">
+            <button aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents"
+                    class="btn btn-lg border-0 d-md-none" data-bs-target="#tocOffcanvas" data-bs-toggle="offcanvas"
+                    style="margin-top: -.65em; margin-left: -.8em" type="button">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="DataAccess.DataService">
+
+
+            <h1 class="text-break" data-uid="DataAccess.DataService" id="DataAccess_DataService">
+                Class DataService <a class="header-action link-secondary"
+                                     href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L8"
+                                     title="View source"><i
+                    class="bi bi-code-slash"></i></a>
+            </h1>
+
+            <div class="facts text-secondary">
+                <dl>
+                    <dt>Namespace</dt>
+                    <dd><a class="xref" href="DataAccess.html">DataAccess</a></dd>
+                </dl>
+                <dl>
+                    <dt>Assembly</dt>
+                    <dd>DataAccess.dll</dd>
+                </dl>
+            </div>
+
+            <div class="markdown summary"></div>
+            <div class="markdown conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public class DataService : IDataService</code></pre>
+            </div>
+
+
+            <dl class="typelist inheritance">
+                <dt>Inheritance</dt>
+                <dd>
+                    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+                    <div><span class="xref">DataService</span></div>
+                </dd>
+            </dl>
+
+            <dl class="typelist implements">
+                <dt>Implements</dt>
+                <dd>
+                    <div><a class="xref" href="DataAccess.IDataService.html">IDataService</a></div>
+                </dd>
+            </dl>
+
+
+            <dl class="typelist inheritedMembers">
+                <dt>Inherited Members</dt>
+                <dd>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+                    </div>
+                    <div>
+                        <a class="xref"
+                           href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object,
+                            object)</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object,
+                            object)</a>
+                    </div>
+                    <div>
+                        <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+                    </div>
+                </dd>
+            </dl>
+
+
+            <h2 class="section" id="constructors">Constructors
+            </h2>
+
+
+            <a data-uid="DataAccess.DataService.#ctor*" id="DataAccess_DataService__ctor_"></a>
+
+            <h3 data-uid="DataAccess.DataService.#ctor(DataAccess.QuizDbContext)"
+                id="DataAccess_DataService__ctor_DataAccess_QuizDbContext_">
+                DataService(QuizDbContext)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L15"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"></div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public DataService(QuizDbContext context)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>context</code> <a class="xref" href="DataAccess.QuizDbContext.html">QuizDbContext</a></dt>
+                <dd></dd>
+            </dl>
+
+
+            <h2 class="section" id="methods">Methods
+            </h2>
+
+
+            <a data-uid="DataAccess.DataService.AddAnswersToQuestionAsync*"
+               id="DataAccess_DataService_AddAnswersToQuestionAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.AddAnswersToQuestionAsync(System.Int32,ModelsLibrary.AnswerModel)"
+                id="DataAccess_DataService_AddAnswersToQuestionAsync_System_Int32_ModelsLibrary_AnswerModel_">
+                AddAnswersToQuestionAsync(int, AnswerModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L98"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Adds an answer to a specific question asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task AddAnswersToQuestionAsync(int questionId, AnswerModel? answer)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>questionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+                </dt>
+                <dd><p>The ID of the question.</p>
+                </dd>
+                <dt><code>answer</code> <a class="xref" href="ModelsLibrary.AnswerModel.html">AnswerModel</a></dt>
+                <dd><p>The answer to add.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.AddQuestionToTopic*"
+               id="DataAccess_DataService_AddQuestionToTopic_"></a>
+
+            <h3 data-uid="DataAccess.DataService.AddQuestionToTopic(System.Int32,ModelsLibrary.QuestionModel)"
+                id="DataAccess_DataService_AddQuestionToTopic_System_Int32_ModelsLibrary_QuestionModel_">
+                AddQuestionToTopic(int, QuestionModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L75"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Adds a question to a specific topic asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code
+                        class="lang-csharp hljs">public Task AddQuestionToTopic(int topicId, QuestionModel? question)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>topicId</code> <a class="xref"
+                                            href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+                <dd><p>The ID of the topic.</p>
+                </dd>
+                <dt><code>question</code> <a class="xref" href="ModelsLibrary.QuestionModel.html">QuestionModel</a></dt>
+                <dd><p>The question to add.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.AddTopicAsync*" id="DataAccess_DataService_AddTopicAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.AddTopicAsync(ModelsLibrary.TopicModel)"
+                id="DataAccess_DataService_AddTopicAsync_ModelsLibrary_TopicModel_">
+                AddTopicAsync(TopicModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L30"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Adds a new topic asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task AddTopicAsync(TopicModel? topic)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>topic</code> <a class="xref" href="ModelsLibrary.TopicModel.html">TopicModel</a></dt>
+                <dd><p>The topic to add.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.GetAnswersByQuestionAsync*"
+               id="DataAccess_DataService_GetAnswersByQuestionAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.GetAnswersByQuestionAsync(System.Int32)"
+                id="DataAccess_DataService_GetAnswersByQuestionAsync_System_Int32_">
+                GetAnswersByQuestionAsync(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L82"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Retrieves all answers for a specific question asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;AnswerModel?&gt;&gt; GetAnswersByQuestionAsync(int questionId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>questionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+                </dt>
+                <dd><p>The ID of the question.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a
+                        class="xref"
+                        href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a
+                        class="xref" href="ModelsLibrary.AnswerModel.html">AnswerModel</a>&gt;&gt;
+                </dt>
+                <dd><p>A collection of answers.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.GetDashBoardByUserAsync*"
+               id="DataAccess_DataService_GetDashBoardByUserAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.GetDashBoardByUserAsync(System.String)"
+                id="DataAccess_DataService_GetDashBoardByUserAsync_System_String_">
+                GetDashBoardByUserAsync(string?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L176"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Retrieves the dashboard for a specific user asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task&lt;List&lt;DashboardModel?&gt;&gt; GetDashBoardByUserAsync(string? userId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The ID of the user.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a
+                        class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a
+                        class="xref" href="ModelsLibrary.DashboardModel.html">DashboardModel</a>&gt;&gt;
+                </dt>
+                <dd><p>A list of dashboard models for the user.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.GetQuestionsByTopicAsync*"
+               id="DataAccess_DataService_GetQuestionsByTopicAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.GetQuestionsByTopicAsync(System.Int32)"
+                id="DataAccess_DataService_GetQuestionsByTopicAsync_System_Int32_">
+                GetQuestionsByTopicAsync(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L36"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Retrieves all questions for a specific topic asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;QuestionModel?&gt;&gt; GetQuestionsByTopicAsync(int topicId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>topicId</code> <a class="xref"
+                                            href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+                <dd><p>The ID of the topic.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a
+                        class="xref"
+                        href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a
+                        class="xref" href="ModelsLibrary.QuestionModel.html">QuestionModel</a>&gt;&gt;
+                </dt>
+                <dd><p>A collection of questions.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.GetQuizByTopicIdAsync*"
+               id="DataAccess_DataService_GetQuizByTopicIdAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.GetQuizByTopicIdAsync(System.Int32)"
+                id="DataAccess_DataService_GetQuizByTopicIdAsync_System_Int32_">
+                GetQuizByTopicIdAsync(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L43"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Retrieves a quiz by topic ID asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task&lt;List&lt;QuestionModel&gt;&gt; GetQuizByTopicIdAsync(int topicId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>topicId</code> <a class="xref"
+                                            href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+                <dd><p>The ID of the topic.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a
+                        class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a
+                        class="xref" href="ModelsLibrary.QuestionModel.html">QuestionModel</a>&gt;&gt;
+                </dt>
+                <dd><p>A list of questions for the quiz.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.GetTopicByQuestionId*"
+               id="DataAccess_DataService_GetTopicByQuestionId_"></a>
+
+            <h3 data-uid="DataAccess.DataService.GetTopicByQuestionId(System.Int32)"
+                id="DataAccess_DataService_GetTopicByQuestionId_System_Int32_">
+                GetTopicByQuestionId(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L90"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Retrieves a topic by question ID asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code
+                        class="lang-csharp hljs">public Task&lt;TopicModel?&gt; GetTopicByQuestionId(int questionId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>questionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+                </dt>
+                <dd><p>The ID of the question.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a
+                        class="xref" href="ModelsLibrary.TopicModel.html">TopicModel</a>&gt;
+                </dt>
+                <dd><p>The topic of the question.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.GetTopicsAsync*" id="DataAccess_DataService_GetTopicsAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.GetTopicsAsync" id="DataAccess_DataService_GetTopicsAsync">
+                GetTopicsAsync()
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L24"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Retrieves all topics asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code
+                        class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TopicModel?&gt;&gt; GetTopicsAsync()</code></pre>
+            </div>
+
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a
+                        class="xref"
+                        href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a
+                        class="xref" href="ModelsLibrary.TopicModel.html">TopicModel</a>&gt;&gt;
+                </dt>
+                <dd><p>A collection of topics.</p>
+                </dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.SetAnswerArchivedAsync*"
+               id="DataAccess_DataService_SetAnswerArchivedAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.SetAnswerArchivedAsync(System.Int32)"
+                id="DataAccess_DataService_SetAnswerArchivedAsync_System_Int32_">
+                SetAnswerArchivedAsync(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L133"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Sets a specific answer as archived asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task SetAnswerArchivedAsync(int answerId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>answerId</code> <a class="xref"
+                                             href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+                <dd><p>The ID of the answer.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.SetQuestionArchivedAsync*"
+               id="DataAccess_DataService_SetQuestionArchivedAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.SetQuestionArchivedAsync(System.Int32)"
+                id="DataAccess_DataService_SetQuestionArchivedAsync_System_Int32_">
+                SetQuestionArchivedAsync(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L119"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Sets a specific question as archived asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task SetQuestionArchivedAsync(int questionId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>questionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+                </dt>
+                <dd><p>The ID of the question.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.SetTopicArchivedAsync*"
+               id="DataAccess_DataService_SetTopicArchivedAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.SetTopicArchivedAsync(System.Int32)"
+                id="DataAccess_DataService_SetTopicArchivedAsync_System_Int32_">
+                SetTopicArchivedAsync(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L105"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Sets a specific topic as archived asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task SetTopicArchivedAsync(int topicId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>topicId</code> <a class="xref"
+                                            href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+                <dd><p>The ID of the topic.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.UpdateAnswerAsync*" id="DataAccess_DataService_UpdateAnswerAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.UpdateAnswerAsync(ModelsLibrary.AnswerModel)"
+                id="DataAccess_DataService_UpdateAnswerAsync_ModelsLibrary_AnswerModel_">
+                UpdateAnswerAsync(AnswerModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L153"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates a specific answer asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task UpdateAnswerAsync(AnswerModel? answer)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>answer</code> <a class="xref" href="ModelsLibrary.AnswerModel.html">AnswerModel</a></dt>
+                <dd><p>The updated answer.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.UpdateCorrectAnswer*"
+               id="DataAccess_DataService_UpdateCorrectAnswer_"></a>
+
+            <h3 data-uid="DataAccess.DataService.UpdateCorrectAnswer(System.Int32)"
+                id="DataAccess_DataService_UpdateCorrectAnswer_System_Int32_">
+                UpdateCorrectAnswer(int)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L159"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates the correct answer for a question asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task UpdateCorrectAnswer(int answerId)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>answerId</code> <a class="xref"
+                                             href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+                <dd><p>The ID of the answer.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.UpdateQuestionAsync*"
+               id="DataAccess_DataService_UpdateQuestionAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.UpdateQuestionAsync(ModelsLibrary.QuestionModel)"
+                id="DataAccess_DataService_UpdateQuestionAsync_ModelsLibrary_QuestionModel_">
+                UpdateQuestionAsync(QuestionModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L147"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates a specific question asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code
+                        class="lang-csharp hljs">public Task UpdateQuestionAsync(QuestionModel? question)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>question</code> <a class="xref" href="ModelsLibrary.QuestionModel.html">QuestionModel</a></dt>
+                <dd><p>The updated question.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.UpdateTopicAsync*" id="DataAccess_DataService_UpdateTopicAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.UpdateTopicAsync(ModelsLibrary.TopicModel)"
+                id="DataAccess_DataService_UpdateTopicAsync_ModelsLibrary_TopicModel_">
+                UpdateTopicAsync(TopicModel?)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L141"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates a specific topic asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task UpdateTopicAsync(TopicModel? topic)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>topic</code> <a class="xref" href="ModelsLibrary.TopicModel.html">TopicModel</a></dt>
+                <dd><p>The updated topic.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+            <a data-uid="DataAccess.DataService.UpdateUserDashboardAsync*"
+               id="DataAccess_DataService_UpdateUserDashboardAsync_"></a>
+
+            <h3 data-uid="DataAccess.DataService.UpdateUserDashboardAsync(System.String,System.Int32,System.Boolean)"
+                id="DataAccess_DataService_UpdateUserDashboardAsync_System_String_System_Int32_System_Boolean_">
+                UpdateUserDashboardAsync(string, int, bool)
+                <a class="header-action link-secondary"
+                   href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L183"
+                   title="View source"><i
+                        class="bi bi-code-slash"></i></a>
+            </h3>
+
+            <div class="markdown level1 summary"><p>Updates the user's dashboard asynchronously.</p>
+            </div>
+            <div class="markdown level1 conceptual"></div>
+
+            <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public Task UpdateUserDashboardAsync(string userId, int questionId, bool correctAnswer)</code></pre>
+            </div>
+
+            <h4 class="section">Parameters</h4>
+            <dl class="parameters">
+                <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+                </dt>
+                <dd><p>The ID of the user.</p>
+                </dd>
+                <dt><code>questionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+                </dt>
+                <dd><p>The ID of the question.</p>
+                </dd>
+                <dt><code>correctAnswer</code> <a class="xref"
+                                                  href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>
+                </dt>
+                <dd><p>Whether the answer was correct.</p>
+                </dd>
+            </dl>
+
+            <h4 class="section">Returns</h4>
+            <dl class="parameters">
+                <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>
+                </dt>
+                <dd></dd>
+            </dl>
+
+
+        </article>
+
+        <div class="contribution d-print-none">
+            <a class="edit-link"
+               href="https://github.com/marcomarco94/IUQuizApp/blob/master/DataAccess/DataService.cs/#L8">Edit this
+                page</a>
+        </div>
+
+
+    </div>
+
+    <div class="affix">
+        <nav id="affix"></nav>
+    </div>
+</main>
+
+<div class="container-xxl search-results" id="search-results"></div>
+
+<footer class="border-top text-secondary">
+    <div class="container-xxl">
+        <div class="flex-fill">
+            <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

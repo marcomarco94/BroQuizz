@@ -1,0 +1,49 @@
+﻿@page "/questionnaires"
+@using BlazorApp.Components.HelperComps
+@using Microsoft.AspNetCore.Authorization
+@rendermode InteractiveServer
+
+@attribute [Authorize]
+
+<AuthorizeView>
+    <PageTitle>Fragenkatalog</PageTitle>
+    <FluentGrid Spacing="2">
+        <FluentGridItem xs="12" sm="4">
+            <FluentHeader Height="40" Appearance="Appearance.Accent">Thema</FluentHeader>
+            <br/>
+            <QuestionnaireListbox
+                TItem="TopicModel"
+                Parent="@ParentTopic"
+                @bind-SelectedItem="@SelectedTopic">
+            </QuestionnaireListbox>
+        </FluentGridItem>
+
+        <FluentGridItem xs="12" sm="8">
+            <FluentHeader Height="40" Appearance="Appearance.Accent">Fragen</FluentHeader>
+            <br/>
+            <QuestionnaireListbox
+                TItem="QuestionModel"
+                Parent="@SelectedTopic"
+                @bind-SelectedItem="@SelectedQuestion">
+            </QuestionnaireListbox>
+        </FluentGridItem>
+
+        <FluentGridItem xs="12">
+            <FluentHeader Height="40" Appearance="Appearance.Accent">Antworten</FluentHeader>
+            <QuestionnaireListbox
+                TItem="AnswerModel"
+                Parent="@SelectedQuestion"
+                @bind-SelectedItem="@SelectedAnswer">
+            </QuestionnaireListbox>
+        </FluentGridItem>
+    </FluentGrid>
+</AuthorizeView>
+
+@code
+{
+    private TopicModel? ParentTopic { get; } = new();
+    private TopicModel? SelectedTopic { get; set; }
+    private QuestionModel? SelectedQuestion { get; set; }
+    private AnswerModel? SelectedAnswer { get; set; }
+    
+}

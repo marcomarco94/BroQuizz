@@ -1,0 +1,54 @@
+﻿@page "/"
+@using BlazorApp.Components.HelperComps
+@using Microsoft.AspNetCore.SignalR.Client
+@rendermode InteractiveServer
+@inject OnlineSerive OnlineService
+
+
+<PageTitle>Quiz Spiel</PageTitle>
+<FluentGrid Spacing="2">
+    <FluentGridItem xs="12" sm="@_gridSize">
+        <GameTopicArea
+            ConnectedUsers="_connectedUsers"
+            @bind-SelectedTopic="_selectedTopic">
+        </GameTopicArea>
+        <p/>
+        <GamingArea
+            Topic="@_selectedTopic"
+            ConnectedUsers="@_connectedUsers">
+        </GamingArea>
+
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="@_gridSize">
+        <OnlineArea
+            ParentTopic="@_selectedTopic"
+            @bind-ConnectedUsers="@_connectedUsers">
+        </OnlineArea>
+    </FluentGridItem>
+</FluentGrid>
+
+@code
+{
+    private TopicModel _selectedTopic = new();
+    private List<PlayerModel> _connectedUsers = new();
+    private int _gridSize = 12;
+
+    protected override void OnInitialized()
+    {
+        OnlineService.ConnectionStateChanged += OnConnectionStateChanged;
+    }
+
+    private void OnConnectionStateChanged(HubConnectionState oldState, HubConnectionState newState)
+    {
+        if (newState == HubConnectionState.Connected)
+        {
+            _gridSize = 6;
+        }
+        else
+        {
+            _gridSize = 12;
+        }
+
+        StateHasChanged();
+    }
+}

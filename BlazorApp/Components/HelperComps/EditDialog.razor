@@ -1,0 +1,30 @@
+@implements IDialogContentComponent<string>
+
+
+<FluentTextField @bind-Value="@Content">Eintrag bearbeiten</FluentTextField>
+
+@if (Dialog != null)
+{
+    <FluentDialogFooter>
+        <FluentButton Appearance="Appearance.Accent" OnClick="@SaveAsync">Speichern</FluentButton>
+        <FluentButton Appearance="Appearance.Neutral" OnClick="@CancelAsync">Abbrechen</FluentButton>
+    </FluentDialogFooter>
+}
+
+@code {
+    [Parameter] public string Content { get; set; } = default!;
+
+    [CascadingParameter] public FluentDialog? Dialog { get; set; }
+
+
+    private async Task SaveAsync()
+    {
+        await Dialog!.CloseAsync(Content);
+    }
+
+    private async Task CancelAsync()
+    {
+        await Dialog!.CancelAsync();
+    }
+
+}

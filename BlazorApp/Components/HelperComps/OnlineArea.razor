@@ -1,0 +1,294 @@
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.SignalR.Client
+@using Message = ModelsLibrary.Message
+@inject IJSRuntime JsRuntime
+@inject OnlineSerive OnlineService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<FluentHeader Height="40" Appearance="Appearance.Accent">Onlinebereich</FluentHeader>
+<p/>
+@if (!IsConnected)
+{
+    <FluentLabel
+        Typo="Typography.Body"
+        Style="width: 100%">
+        Gebe deinen Namen ein, um dem Spielchat beizutreten:
+    </FluentLabel>
+    <br/>
+    <EditForm Model="Player">
+        <DataAnnotationsValidator/>
+        <ValidationMessage For="() => Player!.Username" class="text-danger"/>
+        <AuthorizeView>
+            <Authorized Context="authorizedContext">
+                <FluentTextField ReadOnly="true" @bind-Value="@Player!.Username" Style="width: 100%"/>
+            </Authorized>
+            <NotAuthorized Context="notAuthorizedContext">
+                <FluentTextField Minlength="3" Maxlength="32" @bind-Value="@Player!.Username" Style="width: 100%"/>
+            </NotAuthorized>
+        </AuthorizeView>
+
+        <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" Style="width: 49%" @onclick="Connect">Mehrspieler</FluentButton>
+        <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" Style="width: 49%" @onclick="ConnectSinglePlayer">Einzelspieler</FluentButton>
+    </EditForm>
+}
+else
+{
+    <p>Du bist angemeldet als: <b>@Player?.Username</b></p>
+    <p/>
+    <FluentButton Appearance="Appearance.Accent" @onclick="@DisconnectAsync">Verbindung trennen</FluentButton>
+    <hr/>
+    @if (Player != null && Player.PlayingSingleMode == false)
+    {
+        <FluentCard id="messageBox" Height="300px" Style="overflow-y: auto; scroll-behavior: smooth">
+            @{
+                var messagesCopy = _messages.ToList();
+            }
+            @foreach (var item in messagesCopy)
+            {
+                @if (item.IsNotice)
+                {
+                    <div class="alert alert-info">@item.Body</div>
+                }
+                else
+                {
+                    <FluentCard Height="auto" Style="@item.CSS">
+                        <div style="font-weight: bold;">@item.Username</div>
+                        <div style="word-wrap: break-word; white-space: pre-wrap;">@item.Body</div>
+                    </FluentCard>
+                }
+
+                <hr/>
+            }
+        </FluentCard>
+
+        <EditForm Model="NewMsg" OnSubmit="SendChatMessageAsync" FormName="addNewMessage">
+            <hr/>
+            @if (NewMsg != null)
+            {
+                <FluentTextArea id="messageInput" Name="NewMessage.Text" @bind-Value="@NewMsg.Text" @onkeydown="KeyDown" Required="true" Placeholder="Nachricht" Style="width: 100%;"/>
+            }
+            <p/>
+            <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" Style="width: 100%">Senden</FluentButton>
+        </EditForm>
+    }
+}
+
+@code {
+
+
+    [Parameter] public TopicModel? ParentTopic { get; set; } = new();
+    [Parameter] public List<PlayerModel>? ConnectedUsers { get; set; } = new();
+    [Parameter] public EventCallback<List<PlayerModel>> ConnectedUsersChanged { get; set; }
+    [SupplyParameterFromForm] private NewMessage? NewMsg { get; set; } = new();
+    [SupplyParameterFromForm] private PlayerModel? Player { get; set; } = new();
+
+    private bool IsConnected =>
+        OnlineService.HubConnection?.State == HubConnectionState.Connected;
+
+    private TopicModel? _oldParentTopic = new();
+    private string? NewRoomId => ParentTopic?.Id.ToString();
+    private string? OldRoomId => _oldParentTopic?.Id.ToString();
+
+    private List<Message> _messages = new();
+
+    public class NewMessage
+    {
+        public string? Text { get; set; } = string.Empty;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsConnected && OldRoomId != NewRoomId && Player.PlayingSingleMode)
+        {
+            _oldParentTopic = ParentTopic;
+            if (OnlineService.HubConnection != null) await OnlineService.HubConnection.InvokeAsync("StopGame", ParentTopic?.Id.ToString(), true);
+            await StartSingleGame();
+        }
+        else if (IsConnected && OldRoomId != NewRoomId)
+        {
+            await UpdateGroupAsync();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        NavigationManager.LocationChanged += HandleLocationChanged;
+        await GetUserName();
+    }
+
+    private async void HandleLocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        if (IsConnected)
+        {
+            await DisconnectAsync();
+        }
+    }
+
+    private async Task GetUserName()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        if (authState.User.Identity?.Name is null)
+        {
+            return;
+        }
+
+        var user = authState.User;
+        Player.Username = user.Identity?.Name.Split('@')[0];
+    }
+
+    public async Task Connect()
+    {
+        try
+        {
+            if (Player?.Username is null || Player.Username.Length < 3)
+            {
+                return;
+            }
+
+            _messages.Clear();
+            await OnlineService.ConnectAsync(Player);
+            if (OnlineService.HubConnection != null)
+            {
+                OnlineService.HubConnection.On<PlayerModel, string>("SendToGroup", MessageToGroup);
+                OnlineService.HubConnection.On<List<PlayerModel>>("ConnectedUsersChanged", UpdateConnectedUsers);
+            }
+
+            await UpdateGroupAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"ERROR: Failed to start chat client: {e.Message}");
+        }
+    }
+
+    private async Task StartSingleGame()
+    {
+        if (OnlineService.HubConnection != null) await OnlineService.HubConnection.InvokeAsync("StartSinglePlayerGame", Player, ParentTopic?.Id.ToString());
+    }
+
+    private async Task ConnectSinglePlayer()
+    {
+        if (Player?.Username is null || Player.Username.Length < 3)
+            return;
+        Player.PlayingSingleMode = true;
+        await OnlineService.ConnectAsync(Player);
+    }
+
+    private async Task UpdateConnectedUsers(List<PlayerModel> users)
+    {
+        try
+        {
+            await InvokeAsync(() =>
+            {
+                ConnectedUsers = new List<PlayerModel>(users);
+                ConnectedUsersChanged.InvokeAsync(ConnectedUsers);
+                StateHasChanged();
+            });
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    private async Task UpdateGroupAsync()
+    {
+        if (_oldParentTopic?.Text is not null && OldRoomId is not null)
+        {
+            await SendAsync($"[Achtung] {Player?.Username} hat die Gruppe {_oldParentTopic.Text} verlassen.", OldRoomId);
+        }
+
+        await OnlineService.UpdateGroupAsync(Player, NewRoomId);
+        _oldParentTopic = ParentTopic;
+        await SendAsync($"[Achtung] {Player?.Username} ist der Gruppe {ParentTopic?.Text} beigetreten.", NewRoomId);
+
+        await ScrollToBottom();
+    }
+
+    private async Task MessageToGroup(PlayerModel player, string message)
+    {
+        if (IsConnected)
+        {
+            var isMine = player.ConnectionId != null && player.ConnectionId.Equals(Player?.ConnectionId);
+            if (player.Username != null) _messages.Add(new Message(player.Username, message, isMine));
+            await InvokeAsync(StateHasChanged);
+            await ScrollToBottom();
+            if (isMine)
+            {
+                await JsRuntime.InvokeVoidAsync("eval", "document.getElementById('messageInput').focus();");
+            }
+        }
+    }
+
+    private async Task DisconnectAsync()
+    {
+        if (IsConnected)
+        {
+            await SendAsync($"[Achtung] {Player?.Username} hat sich abgemeldet.", NewRoomId);
+            if (Player != null && Player.PlayingSingleMode)
+            {
+                if (OnlineService.HubConnection != null) await OnlineService.HubConnection.InvokeAsync("StopGame", ParentTopic?.Id.ToString(), true);
+            }
+
+            if (Player != null) Player.PlayingSingleMode = false;
+            await ScrollToBottom();
+            await OnlineService.DisconnectAsync();
+            NavigationManager.NavigateTo("/", true);
+        }
+    }
+
+    private async Task SendChatMessageAsync()
+    {
+        if (IsConnected && NewMsg != null)
+                NewMsg.Text = await JsRuntime.InvokeAsync<string>("eval", "document.getElementById('messageInput').value;");
+        if (IsConnected && !string.IsNullOrWhiteSpace(NewMsg?.Text) && !_shiftPressed)
+        {
+            await OnlineService.SendMessageAsync(NewMsg.Text, NewRoomId);
+            NewMsg = new NewMessage();
+        }
+    }
+
+    private async Task SendAsync(string? message, string? roomId)
+    {
+        if (IsConnected && !string.IsNullOrWhiteSpace(message))
+        {
+            await OnlineService.SendMessageAsync(message, roomId);
+        }
+    }
+
+    private bool _shiftPressed = false;
+
+    private void KeyDown(KeyboardEventArgs e)
+    {
+        if (e.ShiftKey)
+        {
+            _shiftPressed = true;
+        }
+
+        if (!e.ShiftKey)
+        {
+            _shiftPressed = false;
+        }
+    }
+
+
+    private async Task ScrollToBottom()
+    {
+        if (IsConnected)
+        {
+            await Task.Delay(300);
+            await JsRuntime.InvokeVoidAsync("eval", @"
+                var element = document.getElementById('messageBox');
+                if (element) {
+                    element.scrollTop = element.scrollHeight;
+                } else {
+                    console.log('Element not found');
+                }
+            ");
+        }
+    }
+
+
+}

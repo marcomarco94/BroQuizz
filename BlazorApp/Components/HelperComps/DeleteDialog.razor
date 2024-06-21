@@ -1,0 +1,29 @@
+@implements IDialogContentComponent<string>
+
+<p>Wollen Sie den Eintrag @Content löschen?</p>
+
+@if (Dialog != null)
+{
+    <FluentDialogFooter>
+        <FluentButton Appearance="Appearance.Accent" OnClick="@DeleteAsync">Löschen</FluentButton>
+        <FluentButton Appearance="Appearance.Neutral" OnClick="@CancelAsync">Abbrechen</FluentButton>
+    </FluentDialogFooter>
+}
+
+@code {
+    [Parameter] public string Content { get; set; } = default!;
+
+    [CascadingParameter] public FluentDialog? Dialog { get; set; }
+
+
+    private async Task DeleteAsync()
+    {
+        await Dialog!.CloseAsync(Content);
+    }
+
+    private async Task CancelAsync()
+    {
+        await Dialog!.CancelAsync();
+    }
+
+}

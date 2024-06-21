@@ -1,0 +1,113 @@
+@inject IDataService DataService
+@inject OnlineSerive OnlineService
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.SignalR.Client
+@implements IAsyncDisposable
+
+@if (IsConnected)
+{
+    <FluentHeader Height="40" Appearance="Appearance.Accent">Spielbereich</FluentHeader>
+    <FluentListbox
+        Appearance="Appearance.Accent"
+        Items="@Topics"
+        Id="topics-listbox"
+        Height="140px"
+        OptionText="@(t => t.Text)"
+        OptionValue="@(t => t.Id.ToString())"
+        @bind-SelectedOption:get="@SelectedTopic" @bind-SelectedOption:set="OnItemSelected">
+        <OptionTemplate>
+            <div>
+                @context.Text
+                <FluentIcon Icon="Icons.Regular.Size16.Connected"/>
+                @GetConnectedUsersByTopic(context.Id.ToString())
+            </div>
+        </OptionTemplate>
+    </FluentListbox>
+}
+
+@code {
+
+    [Parameter] public TopicModel? SelectedTopic { get; set; }
+    [Parameter] public EventCallback<TopicModel> SelectedTopicChanged { get; set; }
+    [Parameter] public List<PlayerModel>? ConnectedUsers { get; set; } = new();
+
+    private List<PlayerModel>? OldConnectedUsers { get; set; } = new();
+
+    private bool IsConnected =>
+        OnlineService.HubConnection?.State == HubConnectionState.Connected;
+
+    private List<TopicModel?> Topics { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        OnlineService.ConnectionStateChanged += OnConnectionStateChanged;
+    }
+
+    private async void OnConnectionStateChanged(HubConnectionState oldState, HubConnectionState newState)
+    {
+        if (IsConnected)
+        {
+            await GetTopicsAsync();
+        }
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        if (ConnectedUsers != OldConnectedUsers)
+        {
+            OldConnectedUsers = ConnectedUsers;
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private string GetConnectedUsersByTopic(string topicId)
+    {
+        if (ConnectedUsers != null)
+        {
+            var userCount = ConnectedUsers.Count(user => user.RoomId == topicId);
+            return $"{userCount} Online";
+        }
+
+        return "0 Online";
+    }
+
+    private async Task GetTopicsAsync()
+    {
+        Topics.Clear();
+        var topics = await DataService.GetTopicsAsync();
+        foreach (var topic in topics.ToList())
+        {
+            if (topic != null)
+            {
+                var quiz = await DataService.GetQuizByTopicIdAsync(topic.Id);
+                var validTopic = quiz.Any(q => q.Answers != null && q.Answers.Count > 0);
+                if (validTopic)
+                {
+                    Topics.Add(topic);
+                }
+            }
+        }
+
+        var entryArea = new TopicModel
+        {
+            Id = 0,
+            Text = "Eingangsbereich"
+        };
+        Topics.Insert(0, entryArea);
+        await OnItemSelected(entryArea);
+    }
+
+    private async Task OnItemSelected(TopicModel? value)
+    {
+        await SelectedTopicChanged.InvokeAsync(value);
+        SelectedTopic = value;
+    }
+
+    public ValueTask DisposeAsync()
+    {
+        OnlineService.ConnectionStateChanged -= OnConnectionStateChanged;
+        return ValueTask.CompletedTask;
+    }
+
+}

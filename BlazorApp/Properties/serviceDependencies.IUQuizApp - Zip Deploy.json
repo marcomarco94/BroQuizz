@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/IUQuizApp/providers/Microsoft.ServiceLinker/linkers/AuthDbString_6BE5B8ECAF",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iuquizappdbserver/databases/IUQuizApp_db",
+      "type": "mssql.azure",
+      "connectionId": "AuthDbString"
+    },
+    "mssql3": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/IUQuizApp/providers/Microsoft.ServiceLinker/linkers/DataDbString_3EAA0B8B9B",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iuquizappdbserver/databases/IUQuiyAppData_db",
+      "type": "mssql.azure",
+      "connectionId": "DataDbString"
+    }
+  }
+}

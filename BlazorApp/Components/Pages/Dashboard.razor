@@ -1,0 +1,83 @@
+﻿@page "/dashboard/"
+@using System.Security.Claims
+@using ApexCharts
+@using Microsoft.AspNetCore.Authorization
+@inject IDataService DataService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@attribute [Authorize]
+@rendermode InteractiveServer
+
+<PageTitle>Dashboard</PageTitle>
+<AuthorizeView>
+    @if (_dashBoards.Count > 0)
+    {
+        <ApexChart Width="1024" TItem="BarChartModel"
+                   Title="Persönlicher Fortschritt">
+
+            <ApexPointSeries TItem="BarChartModel"
+                             Items="_barChartModels"
+                             Name="Korrekte Antworten"
+                             SeriesType="SeriesType.Bar"
+                             XValue="e => e.TopicName"
+                             YValue="e => e.CorrectAnswersCount"/>
+
+
+            <ApexPointSeries TItem="BarChartModel"
+                             Items="_barChartModels"
+                             Name="Falsche Antworten"
+                             SeriesType="SeriesType.Bar"
+                             XValue="e => e.TopicName"
+                             YValue="e => e.WrongAnswersCount"/>
+        </ApexChart>
+    }
+</AuthorizeView>
+
+@code {
+
+    private List<DashboardModel?> _dashBoards = new();
+    private readonly List<BarChartModel> _barChartModels = new();
+
+    private class BarChartModel
+    {
+        public int Id { get; set; }
+        public string? TopicName { get; set; }
+        public int CorrectAnswersCount { get; set; }
+        public int WrongAnswersCount { get; set; }
+    }
+
+    private async Task<string?> GetUserId()
+    {
+        var claim = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var id = claim.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        return id?.Value;
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userId = await GetUserId();
+        _dashBoards = await DataService.GetDashBoardByUserAsync(userId);
+        foreach (var dashboard in _dashBoards)
+        {
+            if (dashboard != null)
+            {
+                var topic = await DataService.GetTopicByQuestionId(dashboard.QuestionId);
+                if (!_barChartModels.Any(m => topic != null && m.Id == topic.Id))
+                {
+                    var barChartModel = new BarChartModel();
+                    if (topic != null)
+                    {
+                        barChartModel.Id = topic.Id;
+                        barChartModel.TopicName = topic.Text;
+                    }
+
+                    _barChartModels.Add(barChartModel);
+                }
+
+                _barChartModels.FirstOrDefault(m => m.Id == topic.Id).CorrectAnswersCount += dashboard.CorrectAnswersCount;
+                _barChartModels.FirstOrDefault(m => m.Id == topic.Id).WrongAnswersCount += dashboard.WrongAnswersCount;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,25 @@
+﻿@using DataAccess.AuthData
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+<FluentNavMenu Collapse="false">
+    <FluentNavLink Href="Account/Manage" Match="NavLinkMatch.All">Profil</FluentNavLink>
+    <FluentNavLink Href="Account/Manage/Email">Email</FluentNavLink>
+    <FluentNavLink Href="Account/Manage/ChangePassword">Passwort</FluentNavLink>
+    @if (hasExternalLogins)
+    {
+        <FluentNavLink Href="Account/Manage/ExternalLogins">Externe Anmeldungen</FluentNavLink>
+    }
+    <FluentNavLink Href="Account/Manage/PersonalData">Persönliche Daten</FluentNavLink>
+</FluentNavMenu>
+
+
+@code {
+    private bool hasExternalLogins;
+
+    protected override async Task OnInitializedAsync()
+    {
+        hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+    }
+
+}

@@ -1,0 +1,283 @@
+@inject IDialogService DialogService
+@inject IDataService DataService
+@typeparam TItem where TItem : class, IQuestionnaire, new()
+
+<FluentListbox Appearance="Appearance.Accent"
+               Items="@_listItems"
+               Id="topics-listbox"
+               Height="140px"
+               OptionValue="@(q => q.Id.ToString())"
+               @bind-SelectedOption:get="@SelectedItem" @bind-SelectedOption:set="OnItemSelected">
+    <OptionTemplate>
+        <div style="@(context.Id == CorrectAnswerId ? "padding: 2px; border: 2px solid green; border-radius: 5px;" : "")">
+            <span>&nbsp;</span>
+            @context.Text
+            <FluentIcon Icon="Icons.Regular.Size16.Edit" Slot="end" @onclick="() => EditEntryDialogAsync(context)"/>
+            <FluentIcon Icon="Icons.Regular.Size16.Delete" Slot="end" @onclick="() => SetEntryArchived(context)"/>
+            @if (IsAnswerModel)
+            {
+                <span>&nbsp;&nbsp;</span>
+                <FluentIcon Icon="Icons.Regular.Size16.ThumbLike" Slot="end" @onclick="() => AddVoteUp(context)"></FluentIcon>
+                @("(" + GetUpVotes(context) + ")")
+                <FluentIcon Icon="Icons.Regular.Size16.ThumbDislike" Slot="end" @onclick="() => AddVoteDown(context)"/>
+                @("(" + GetDownVotes(context) + ")")
+            }
+        </div>
+    </OptionTemplate>
+</FluentListbox>
+<br/>
+<FluentEditForm Model="NewEntry" OnValidSubmit="AddEntryAsync" FormName="AddNewEntry">
+    <DataAnnotationsValidator/>
+    @if (!IsAnswerModel)
+    {
+        <InputText class="form-control" minlength="5" Name="NewEntry.Text" disabled="@NewEntryDisabled" @bind-Value="@NewEntry.Text" Required="true" Placeholder="Eingabe (Min. Länge 5)" Style="width: 100%"/>
+    }
+    else
+    {
+        <InputText class="form-control" minlength="2" Name="NewEntry.Text" disabled="@NewEntryDisabled" @bind-Value="@NewEntry.Text" Required="true" Placeholder="Eingabe (Min. Länge 2)" Style="width: 100%"/>
+    }
+    <p/>
+    @if (!IsAnswerModel)
+    {
+        <FluentButton Type="ButtonType.Submit" Disabled="@NewEntryDisabled" Appearance="Appearance.Accent" Style="width: 100%">Hinzufügen</FluentButton>
+    }
+    else
+    {
+        <FluentButton Type="ButtonType.Submit" Disabled="@NewEntryDisabled" Appearance="Appearance.Accent" Style="width: 49%">Antwort Hinzufügen</FluentButton>
+        <FluentButton Disabled="@NewEntryDisabled" Appearance="Appearance.Accent" OnClick="AddYesNoAsync" Style="width: 49%">Ja / Nein Hinzufügen</FluentButton>
+    }
+</FluentEditForm>
+
+
+@code
+{
+    [Parameter] public IQuestionnaire? Parent { get; set; }
+    [Parameter] public TItem? SelectedItem { get; set; }
+    [Parameter] public EventCallback<TItem> SelectedItemChanged { get; set; }
+
+    [SupplyParameterFromForm] private TItem NewEntry { get; set; } = new();
+
+    private IQuestionnaire? _oldParent;
+    private List<TItem>? _listItems;
+
+    private bool IsAnswerModel => typeof(TItem) == typeof(AnswerModel);
+    private bool IsQuestionModel => typeof(TItem) == typeof(QuestionModel);
+    private bool IsTopicModel => typeof(TItem) == typeof(TopicModel);
+
+    private int? CorrectAnswerId => (_listItems as List<AnswerModel>)?.FirstOrDefault(a => a.CorrectAnswer)?.Id;
+
+    private bool _votedClicked;
+
+    private bool NewEntryDisabled => typeof(TItem) != typeof(TopicModel) && Parent == null;
+
+    private readonly DialogParameters _parameters = new()
+    {
+        Title = "Achtung",
+        Width = "500px",
+        Height = "200px",
+        TrapFocus = true,
+        Modal = true,
+        PreventScroll = true
+    };
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Parent == null)
+        {
+            _listItems?.Clear();
+            return;
+        }
+
+        if (Parent != _oldParent)
+        {
+            _oldParent = Parent;
+            await GetListItems(Parent);
+            await OnItemSelected(null);
+        }
+    }
+
+    private async Task GetListItems(IQuestionnaire? parent)
+    {
+        if (parent == null)
+            return;
+
+        if (IsTopicModel)
+        {
+            _listItems = await DataService.GetTopicsAsync() as List<TItem>;
+        }
+        else if (IsQuestionModel)
+        {
+            _listItems = await DataService.GetQuestionsByTopicAsync(parent.Id) as List<TItem>;
+        }
+        else if (IsAnswerModel)
+        {
+            _listItems = await DataService.GetAnswersByQuestionAsync(parent.Id) as List<TItem>;
+        }
+    }
+
+    private async Task OnItemSelected(TItem? value)
+    {
+        if (typeof(TItem) == typeof(AnswerModel))
+        {
+            if (value == null && CorrectAnswerId != null && _votedClicked)
+            {
+                value = _listItems?.FirstOrDefault(a => a.Id == CorrectAnswerId);
+                SelectedItem = value;
+            }
+
+            if (value != null && !_votedClicked)
+            {
+                SelectedItem = value;
+                await DataService.UpdateCorrectAnswer(value.Id);
+                await GetListItems(Parent);
+            }
+
+            _votedClicked = false;
+        }
+
+        await SelectedItemChanged.InvokeAsync(value);
+    }
+
+    private async Task AddEntryAsync()
+    {
+        if (IsTopicModel)
+        {
+            await DataService.AddTopicAsync(NewEntry as TopicModel);
+            SelectedItem = NewEntry;
+        }
+
+        if (IsQuestionModel)
+        {
+            if (Parent != null) await DataService.AddQuestionToTopic(Parent.Id, NewEntry as QuestionModel);
+            SelectedItem = NewEntry;
+        }
+
+        if (IsAnswerModel)
+        {
+            if (Parent != null) await DataService.AddAnswersToQuestionAsync(Parent.Id, NewEntry as AnswerModel);
+        }
+
+        NewEntry = new TItem();
+        await GetListItems(Parent);
+        await SelectedItemChanged.InvokeAsync(SelectedItem);
+    }
+
+    private async Task AddYesNoAsync()
+    {
+        var yesModel = new AnswerModel
+        {
+            Text = "Ja"
+        };
+        var noModel = new AnswerModel
+        {
+            Text = "Nein"
+        };
+        if (Parent != null)
+        {
+            await DataService.AddAnswersToQuestionAsync(Parent.Id, yesModel);
+            await DataService.AddAnswersToQuestionAsync(Parent.Id, noModel);
+            await GetListItems(Parent);
+        }
+    }
+
+    private async Task EditEntryDialogAsync(TItem context)
+    {
+        if (context.Text != null)
+        {
+            var dialog = await DialogService.ShowDialogAsync<EditDialog>(context.Text, _parameters);
+            var result = await dialog.Result;
+
+            if (result.Data is not null)
+            {
+                var resultData = result.Data as string;
+                context.Text = resultData;
+
+                if (IsTopicModel)
+                {
+                    await DataService.UpdateTopicAsync(context as TopicModel);
+                }
+                else if (IsQuestionModel)
+                {
+                    await DataService.UpdateQuestionAsync(context as QuestionModel);
+                }
+                else if (IsAnswerModel)
+                {
+                    await DataService.UpdateAnswerAsync(context as AnswerModel);
+                }
+            }
+        }
+    }
+
+    private async Task SetEntryArchived(TItem context)
+    {
+        if (context.Text != null)
+        {
+            var dialog = await DialogService.ShowDialogAsync<DeleteDialog>(context.Text, _parameters);
+            var result = await dialog.Result;
+
+            if (result.Data is not null)
+            {
+                var resultData = result.Data as string;
+                context.Text = resultData;
+
+                if (IsTopicModel)
+                {
+                    await DataService.SetTopicArchivedAsync(context.Id);
+                }
+                else if (IsQuestionModel)
+                {
+                    await DataService.SetQuestionArchivedAsync(context.Id);
+                }
+                else if (IsAnswerModel)
+                {
+                    await DataService.SetAnswerArchivedAsync(context.Id);
+                }
+
+                await GetListItems(Parent);
+            }
+        }
+    }
+
+    private int GetUpVotes(TItem context)
+    {
+        if (context is AnswerModel answer)
+        {
+            return answer.UpVoteCount;
+        }
+
+        return 0;
+    }
+
+    private int GetDownVotes(TItem context)
+    {
+        if (context is AnswerModel answer)
+        {
+            return answer.DownVoteCount;
+        }
+
+        return 0;
+    }
+
+    private async Task AddVoteUp(TItem context)
+    {
+        _votedClicked = true;
+        if (context is AnswerModel answer)
+        {
+            answer.UpVoteCount++;
+            await DataService.UpdateAnswerAsync(answer);
+            await GetListItems(Parent);
+        }
+    }
+
+    private async Task AddVoteDown(TItem context)
+    {
+        _votedClicked = true;
+        if (context is AnswerModel answer)
+        {
+            answer.DownVoteCount++;
+            await DataService.UpdateAnswerAsync(answer);
+            await GetListItems(Parent);
+        }
+    }
+
+}
