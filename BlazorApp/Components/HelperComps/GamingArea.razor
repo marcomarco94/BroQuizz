@@ -108,7 +108,7 @@
             return "background-color: lightgreen; border-radius: 5px;";
         }
 
-        if (_game != null && _game.ShowCorrectAnswer && answer?.Id == SelectedAnswerId && !answer.CorrectAnswer)
+        if (answer != null && _game != null && _game.ShowCorrectAnswer && !answer.CorrectAnswer)
         {
             return "background-color: red; border-radius: 5px;";
         }
